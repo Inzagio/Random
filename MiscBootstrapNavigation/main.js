@@ -1,18 +1,46 @@
 document.addEventListener('DOMContentLoaded', renderCard());
 
 
-var container;
+
 // This builds an element using the following syntax var 'yourVarName' = element_builder('HTMLTAG',{attribute:'value', attribute:'value'});
 // Remember to appendChild. e.g if this is the first element created, append it to document.body
 function element_builder(type, attrs) {
     var elem = document.createElement(type);
     if (attrs) {
         Object.getOwnPropertyNames(attrs).forEach(function (attribute) {
-            elem.setAttribute(attribute, attrs[attribute]);
+            elem.setAttribute(attribute.replace('_','-'), attrs[attribute]);
         });
     }
     return elem;
 }
+
+
+//Main.css is added here
+const CSSstyle = element_builder('link', {
+    rel: 'stylesheet',
+    href: 'styles.css'
+});
+document.head.appendChild(CSSstyle);
+
+//jQuery added
+const jQuery = element_builder('script', {
+    src: 'https://code.jquery.com/jquery-3.2.1.slim.min.js'
+});
+document.head.appendChild(jQuery);
+//Bootstrap JS
+const boostrapJS = element_builder('script', {
+    src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js',
+    async: true
+});
+document.head.appendChild(boostrapJS);
+
+//Popper.js
+const popper = element_builder('script', {
+    src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'
+});
+document.head.appendChild(popper);
+
+
 // Link for boostrap css
 const bootstrapLink = element_builder('link', {
     rel: 'stylesheet',
@@ -31,36 +59,10 @@ const fontAwesomeLink = element_builder('link', {
 });
 document.head.appendChild(fontAwesomeLink);
 
-//Main.css is added here
-const CSSstyle = element_builder('link', {
-    rel: 'stylesheet',
-    href: 'styles.css'
-});
-document.head.appendChild(CSSstyle);
-
-//jQuery added
-const jQuery = element_builder('script', {
-    src: 'https://code.jquery.com/jquery-3.2.1.slim.min.js'
-});
-document.head.appendChild(jQuery);
-
-//Popper.js
-const popper = element_builder('script', {
-    src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'
-});
-document.head.appendChild(popper);
-
-//Bootstrap JS
-const boostrapJS = element_builder('script', {
-    src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js'
-});
-document.head.appendChild(boostrapJS);
-
-
 //Renders the navigation cards. 
 function renderCard() {
 
-    container = element_builder('div', { class: 'container text', id: 'cardRow' });
+    var container = element_builder('div', { class: 'container text'});
     var row = element_builder('div', { class: 'row my-3' });
     for (var i = 0; i < 3; i++) {
 
@@ -78,14 +80,11 @@ function renderCard() {
         cardBlock.appendChild(icons);
         cardBlock.appendChild(cardTitle);
 
-
         if (i == 0) {
             icons.setAttribute('class', 'fas fa-users fa-3x');
-            icons.setAttribute('color', 'green');
             cardTitle.innerHTML += 'Users';
             cardBlock.addEventListener('click', function (e) {
                 resetContent();
-                
                 userTabs();
             });
 
@@ -110,9 +109,9 @@ function renderCard() {
 }
 // Reset the content in Dynamic Content Area
 function resetContent() {
-    var contentBox = document.getElementById('dynamicContentArea');
-    while (contentBox.firstChild) {
-        contentBox.removeChild(contentBox.firstChild);
+    var dynamicContent = document.getElementById('dynamicContentArea');
+    while (dynamicContent.firstChild) {
+        dynamicContent.removeChild(dynamicContent.firstChild);
     }
 }
 

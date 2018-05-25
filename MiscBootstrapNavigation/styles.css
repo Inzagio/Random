@@ -1,0 +1,39 @@
+.fa-users:hover{
+    color: rgba(0,0,230,0.7);
+}
+.fa-chart-area:hover{
+    color: rgba(0,0,230,0.7);
+}
+.fa-cog:hover{
+    color: rgba(0,0,230,0.7);
+    animation: roll 2s infinite;
+}
+.col-md-4{
+    cursor: pointer;
+}
+ @keyframes roll{
+    0%{
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+    .fas {
+        font-size: 64px;
+    }
+}

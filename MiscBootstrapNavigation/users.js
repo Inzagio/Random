@@ -1,11 +1,4 @@
-var config = {
-    apiKey: "AIzaSyAVEJXmj2yzkXNNJc36KyIRCYydjkVw9IA",
-    authDomain: "testuserdbtkb.firebaseapp.com",
-    databaseURL: "https://testuserdbtkb.firebaseio.com",
-    projectId: "testuserdbtkb",
-    storageBucket: "testuserdbtkb.appspot.com",
-    messagingSenderId: "1001793894896"
-};
+
 firebase.initializeApp(config);
 var database = firebase.database();
 var dbRefUsers = database.ref('users');
